@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-title>
+            Photo Gallery
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="logout()">
+                <ion-icon name="log-out"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row *ngIf="(images | async) as imagesArray">
+            <ng-container *ngIf="imagesArray.length > 0" >
+                <ion-col size="6" *ngFor="let image of imagesArray">
+                    <ng-container *ngIf="(image | async) as img; else loading">
+                        <img [src]="img"/>
+                    </ng-container>
+                    <ng-template #loading>
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                    </ng-template>
+                </ion-col>
+            </ng-container>
+            <ion-col *ngIf="imagesArray.length === 0" class="ion-justify-content-center" style="display: flex;">
+                <ion-text color="danger">
+                    <h3>No images, upload now!</h3>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button (click)="photoService.takePicture()" color="secondary">
+            <ion-icon name="cloud-upload"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>
