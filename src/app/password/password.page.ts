@@ -8,6 +8,8 @@ import {Router} from '@angular/router';
   templateUrl: './password.page.html',
   styleUrls: ['./password.page.scss'],
 })
+
+
 export class PasswordPage implements OnInit {
 
   public validationsForm: FormGroup;
@@ -23,7 +25,6 @@ export class PasswordPage implements OnInit {
   constructor(
       private formBuilder: FormBuilder,
       private authService: FireAuthService,
-      private alertCtrl: AlertController,
       private router: Router
   ) { }
 
@@ -37,30 +38,13 @@ export class PasswordPage implements OnInit {
   }
 
   resetPassword(email: string): void {
-    this.services.resetPassword(email).then(
-      async () => {
-        const alert = await this.alertCtrl.create({
-          message: 'Check your email for a password reset link',
-          buttons: [
-            {
-              text: 'Ok',
-              role: 'cancel',
-              handler: () => {
-                this.router.navigateByUrl('login');
-              },
-            },
-          ],
+    this.authService.resetPassword(email)
+        .then(() => {
+          this.router.navigate(['/login']);
+        }, err => {
+          this.errorMessage = err.message;
+          console.log(err);
         });
-        await alert.present();
-      },
-      async error => {
-        const errorAlert = await this.alertCtrl.create({
-          message: error.message,
-          buttons: [{ text: 'Ok', role: 'cancel' }],
-        });
-        await errorAlert.present();
-      }
-    );
   }
 
 
