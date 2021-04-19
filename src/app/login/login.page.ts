@@ -22,6 +22,9 @@ export class LoginPage implements OnInit {
       {type: 'minlength', message: 'Password must be at least 5 characterslong.'}
     ]
   };
+    image: any;
+  resources: any;
+  logo: any;
 
   constructor(
       private authService: FireAuthService,
@@ -55,6 +58,10 @@ export class LoginPage implements OnInit {
 
   public goRegisterPage(): void {
     this.router.navigate(['/register']);
+  }
+
+  public goPasswordPage() {
+    this.router.navigate(['/password']);
   }
 
 }

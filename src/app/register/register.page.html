@@ -1,10 +1,16 @@
 <ion-header>
-  <ion-toolbar color="secondary">
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
+  <img src="../../assets/img/imagem_login.png" height=100% width=100%/>
 </ion-header>
 <ion-content class="form-content ion-padding">
   <form class="form" [formGroup]="validationsForm" (ngSubmit)="tryRegister(validationsForm.value)">
+    <ion-item>
+      <ion-label position="floating" color="secondary">First Name</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="secondary">Last Name</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
     <ion-item>
       <ion-label position="floating" color="secondary">Email</ion-label>
       <ion-input type="text" formControlName="email"></ion-input>
@@ -37,5 +43,5 @@
     <label class="error-message">{{errorMessage}}</label>
     <label class="success-message">{{successMessage}}</label>
   </form>
-  <p class="go-to-login"> Already have an account?<a (click)="goLoginPage()">Try to Log In.</a></p>
+  <p class="go-to-login" align="Center"> Already have an account?<a (click)="goLoginPage()">Try to Log In.</a></p>
 </ion-content>

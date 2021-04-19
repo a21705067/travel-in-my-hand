@@ -17,14 +17,14 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 
 export const firebaseConfig = {
-    apiKey: 'AIzaSyAqeuMSOX8PJklOyTvxWdRDetuiTagohh0',
-    authDomain: 'my-first-firebase-app-df746.firebaseapp.com',
-    databaseURL: 'https://my-first-firebase-app-df746.firebaseio.com',
-    projectId: 'my-first-firebase-app-df746',
-    storageBucket: 'my-first-firebase-app-df746.appspot.com',
-    messagingSenderId: '597760634689',
-    appId: '1:597760634689:web:27a2c23c232c7f8cf37bc0',
-    measurementId: 'G-C9NZ8FB313'
+    apiKey: "AIzaSyDuM8nsn9COpIrS3H54-zVym669DCtzir8",
+        authDomain: "travelers-community-68172.firebaseapp.com",
+        databaseURL: "https://travelers-community-68172-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "travelers-community-68172",
+        storageBucket: "travelers-community-68172.appspot.com",
+        messagingSenderId: "901698758803",
+        appId: "1:901698758803:web:c1217634cae71141a88566",
+        measurementId: "G-VXTYSRHXNP"
 };
 
 @NgModule({

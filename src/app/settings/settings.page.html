@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title align="Center">Settings</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Notifications</ion-label>
+      <ion-toggle slot="end" name="Notifications" color="success" checked></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Newsletter</ion-label>
+      <ion-toggle slot="end" name="Newsletter" color="success" checked="false"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Camera Access</ion-label>
+      <ion-toggle slot="end" name="Camera Access" color="success" checked></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Gallery Access</ion-label>
+      <ion-toggle slot="end" name="Gallery Access" color="success" checked></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Location</ion-label>
+      <ion-toggle slot="end" name="Location" color="success" checked="false"></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

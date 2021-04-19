@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+        <ion-title align="Center">Home</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="logout()">
+                <ion-icon name="log-out"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="mainContent">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-card class="ionCards" (click)="profile()">
+                    <img src="../../assets/img/profile.jpg" height="180" width="180"/>
+                    <ion-card-header>
+                        <ion-card-title class="CardTitle">Profile</ion-card-title>
+                        <ion-card-content class="CardContent">Your personal data</ion-card-content>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card class="ionCards" (click)="travels()">
+                    <img src="../../assets/img/mytravels.jpg" height="180" width="180"/>
+                    <ion-card-header>
+                        <ion-card-title class="CardTitle">My Travels</ion-card-title>
+                        <ion-card-content class="CardContent">All your travel info</ion-card-content>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-card class="ionCards" (click)="map()">
+                    <img src="../../assets/img/map.png" height="180" width="180"/>
+                    <ion-card-header>
+                        <ion-card-title class="CardTitle">Map</ion-card-title>
+                        <ion-card-content class="CardContent">Navigation</ion-card-content>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card class="ionCards" (click)="search()">
+                    <img src="../../assets/img/search.jpg" height="180" width="180"/>
+                    <ion-card-header>
+                        <ion-card-title class="CardTitle">Search</ion-card-title>
+                        <ion-card-content class="CardContent">Events, places and more</ion-card-content>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -26,9 +26,24 @@ export class Tab2Page implements OnInit {
         this.authService.doLogout().then(() => this.router.navigate(['/login']), err => console.log(err));
     }
 
-    public async loading(): Promise<void>{
+    public async loading(): Promise<void> {
         const loading = await this.loadingController.create({message: 'Loading', translucent: true, spinner: 'circles'});
         loading.present();
     }
 
+    public profile(): void {
+        this.router.navigate(['/profile']);
+    }
+
+    public travels(): void {
+        this.router.navigate(['/mytravels']);
+    }
+
+    public map(): void {
+        this.router.navigate(['/map']);
+    }
+
+    public search(): void {
+        this.router.navigate(['/search']);
+    }
 }
