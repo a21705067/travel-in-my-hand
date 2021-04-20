@@ -1,5 +1,10 @@
 <ion-header>
-  <img src="../../assets/img/imagem_login.png" height=100% width=100%/>
+  <img src="../../assets/img/imagem_login.png" height=90% width=100%/>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 <ion-content class="form-content ion-padding">
   <form class="form" [formGroup]="validationsForm" (ngSubmit)="tryRegister(validationsForm.value)">
@@ -43,5 +48,5 @@
     <label class="error-message">{{errorMessage}}</label>
     <label class="success-message">{{successMessage}}</label>
   </form>
-  <p class="go-to-login" align="Center"> Already have an account?<a (click)="goLoginPage()">Try to Log In.</a></p>
+  <p class="go-to-login" align="Center"> Already have an account?<a (click)="goLoginPage()"> Try to Log In </a></p>
 </ion-content>

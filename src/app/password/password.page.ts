@@ -37,9 +37,10 @@ export class PasswordPage implements OnInit {
     });
   }
 
-  resetPassword(email: string): void {
-    console.log(this.validationsForm.value);
-    this.authService.resetPassword(this.validationsForm.value)
+  resetPassword(): void {
+    const email = this.validationsForm.controls['email'].value;
+    console.log(email);
+    this.authService.resetPassword(email)
         .then(() => {
           this.router.navigate(['/login']);
         }, err => {
@@ -48,5 +49,8 @@ export class PasswordPage implements OnInit {
         });
   }
 
+  public goLoginPage(): void {
+      this.router.navigate(['/login']);
+  }
 
 }
