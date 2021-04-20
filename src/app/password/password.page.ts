@@ -38,7 +38,8 @@ export class PasswordPage implements OnInit {
   }
 
   resetPassword(email: string): void {
-    this.authService.resetPassword(email)
+    console.log(this.validationsForm.value);
+    this.authService.resetPassword(this.validationsForm.value)
         .then(() => {
           this.router.navigate(['/login']);
         }, err => {
