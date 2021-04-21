@@ -16,12 +16,13 @@ const routes: Routes = [
   { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule) },
   { path: 'mytravels', loadChildren: () => import('./mytravels/mytravels.module').then(m => m.MytravelsPageModule) },
   { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule) },
-  { path: 'planned', loadChildren: () => import('./planned/planned.module').then(m => m.PlannedPageModule) },
   { path: 'newtravel', loadChildren: () => import('./newtravel/newtravel.module').then(m => m.NewtravelPageModule) },
   { path: 'journal', loadChildren: () => import('./journal/journal.module').then(m => m.JournalPageModule) },
   { path: 'pasttravels', loadChildren: () => import('./pasttravels/pasttravels.module').then(m => m.PasttravelsPageModule) },
   { path: 'password', loadChildren: () => import('./password/password.module').then(m => m.PasswordPageModule) },
-  { path: 'location', loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule) }
+  { path: 'location', loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule) },
+  { path: 'camera', loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule) }
+
 
 
 ];

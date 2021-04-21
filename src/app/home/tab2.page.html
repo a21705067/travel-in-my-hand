@@ -57,9 +57,28 @@
             </ion-col>
         </ion-row>
     </ion-grid>
-    <ion-footer>
-        <ion-toolbar>
-            <ion-title>Footer</ion-title>
-        </ion-toolbar>
-    </ion-footer>
+
+    <ion-tabs>
+        <ion-tab-bar slot="bottom">
+            <ion-tab-button (click)="map()">
+                <ion-icon name="map"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button (click)="camera">
+                <ion-icon name="camera"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button>
+                <ion-icon name="home"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button (click)="search()">
+                <ion-icon name="search"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button>
+                <ion-icon name="menu"></ion-icon>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
 </ion-content>
