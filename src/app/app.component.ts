@@ -23,54 +23,34 @@ export class AppComponent {
 
   pages = [
     {
-      title: 'Home',
-      url: './home',
-      icon: 'home'
-    },
-    {
       title: 'Profile',
       url: './profile',
       icon: 'person'
     },
     {
-      title: 'My Travels',
-      children: [
-        {
-          title: 'Planned',
-          url: './planned',
-          icon: 'airplane'
-        },
-        {
-          title: 'New Travel',
-          url: './newtravel',
-          icon: 'compass'
-        },
-        {
-          title: 'Journal',
-          url: './journal',
-          icon: 'book'
-        },
-        {
-          title: 'Past Travels',
-          url: './pasttravel',
-          icon: 'globe'
-        }
-      ]
-    },
-    {
-      title: 'Map',
+      title: 'Chat',
       url: './map',
-      icon: 'map'
+      icon: 'chatbubbles'
     },
     {
-      title: 'Search',
+      title: 'Matchmaking',
       url: './search',
-      icon: 'search'
+      icon: 'people'
+    },
+    {
+      title: 'Partners',
+      url: './settings',
+      icon: 'hand'
     },
     {
       title: 'Settings',
       url: './settings',
       icon: 'settings'
+    },
+    {
+      title: 'Logout',
+      url: './logout',
+      icon: 'log-out'
     }
   ]
 

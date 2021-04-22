@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgModule} from '@angular/core';
 import {PhotoService} from '../services/photo.service';
 import {Observable} from 'rxjs';
 import {FireAuthService} from '../services/fire-auth.service';
-import {Router} from '@angular/router';
+import {RouterModule, Router} from '@angular/router';
 import {LoadingController} from '@ionic/angular';
 
 @Component({
@@ -10,7 +10,14 @@ import {LoadingController} from '@ionic/angular';
     templateUrl: 'tab2.page.html',
     styleUrls: ['tab2.page.scss']
 })
+
 export class Tab2Page implements OnInit {
+
+    tabId: string = 'Personal';
+
+    showTab (tabIdPageName) {
+       this.tabId = tabIdPageName;
+    }
 
     public images: Observable<Array<Observable<any>>>;
 

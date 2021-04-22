@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { PreloadAllModules, Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'pasttravels', loadChildren: () => import('./pasttravels/pasttravels.module').then(m => m.PasttravelsPageModule) },
   { path: 'password', loadChildren: () => import('./password/password.module').then(m => m.PasswordPageModule) },
   { path: 'location', loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule) },
-  { path: 'camera', loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule) }
+  { path: 'camera', loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule) },
+  { path: 'tabs', loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule) }
 
 
 
