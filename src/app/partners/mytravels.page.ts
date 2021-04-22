@@ -26,19 +26,35 @@ export class MytravelsPage implements OnInit {
     loading.present();
   }
 
-  planned() {
-    this.router.navigate(['/planned']);
+  geostar() {
+    this.router.navigate(['']);
   }
 
-  newTravel() {
-    this.router.navigate(['/newtravel']);
+  topatlantico() {
+    this.router.navigate(['']);
   }
 
-  journal() {
-    this.router.navigate(['/journal']);
+  abreu() {
+    this.router.navigate(['']);
   }
 
-  pastTravel() {
-    this.router.navigate(['/pasttravels']);
+  besttravel() {
+    this.router.navigate(['']);
+  }
+
+  public home(): void {
+      this.router.navigate(['/home']);
+  }
+
+  public map(): void {
+      this.router.navigate(['/map']);
+  }
+
+  public search(): void {
+      this.router.navigate(['/search']);
+  }
+
+  public camera(): void {
+          this.router.navigate(['/camera']);
   }
 }

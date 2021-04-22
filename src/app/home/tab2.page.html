@@ -13,12 +13,12 @@
 
 <ion-content class="mainContent">
 
-    <ion-tabs>
+    <ion-tabs position="absolute">
         <ion-tab-bar slot="top">
             <ion-tab-button (click)="showTab('Personal')">
                 <ion-label>Personal</ion-label>
             </ion-tab-button>
-            <ion-tab-button (click)="showTab('Following')">
+            <ion-tab-button (click)="showTab('Following')" class="ion-tab-button">
                 <ion-label>Following</ion-label>
             </ion-tab-button>
             <ion-tab-button (click)="showTab('Partners')">
@@ -33,14 +33,32 @@
                 <ion-row>
                     <ion-col>
                         <ion-card class="ionCards" (click)="planned()" ion-no-margin>
-                            <img src="../../assets/img/newyork.jpg" height="80%" width="80%"/>
+                            <img src="../../assets/img/newyork.jpg"/>
+                        <ion-card-header>
+                            <ion-card-title class="CardTitle">New York - USA</ion-card-title>
+                            <ion-card-content class="CardContent"><b>Best time to visit:</b> All Year <br> <b>Visited by:</b> Zé António </ion-card-content>
+                        </ion-card-header>
                         </ion-card>
                     </ion-col>
+                </ion-row>
+                <ion-row>
                     <ion-col>
-                        <ion-card>
+                        <ion-card class="ionCards" (click)="planned()" ion-no-margin>
+                            <img src="../../assets/img/london.jpg"/>
+                            <ion-card-header>
+                                <ion-card-title class="CardTitle">London - England</ion-card-title>
+                                <ion-card-content class="CardContent">Best time to visit: All year</ion-card-content>
+                            </ion-card-header>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-card class="ionCards" (click)="planned()" ion-no-margin>
+                            <img src="../../assets/img/newyork.jpg" height="80%" width="80%"/>
                             <ion-card-header>
                                 <ion-card-title class="CardTitle">New York</ion-card-title>
-                                <ion-card-content class="CardContent">View your planned travels</ion-card-content>
+                                <ion-card-content class="CardContent">Best time to visit: September - October</ion-card-content>
                             </ion-card-header>
                         </ion-card>
                     </ion-col>
@@ -49,7 +67,41 @@
         </div>
 
         <div class="tab" *ngIf="tabId === 'Following'">
-            Following Page Content
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <ion-card class="ionCards" (click)="planned()" ion-no-margin>
+                            <img src="../../assets/img/newyork.jpg"/>
+                            <ion-card-header>
+                                <ion-card-title class="CardTitle">New York - USA</ion-card-title>
+                                <ion-card-content class="CardContent"><b>Best time to visit:</b> All Year <br> <b>Visited by:</b> Zé António </ion-card-content>
+                            </ion-card-header>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-card class="ionCards" (click)="planned()" ion-no-margin>
+                            <img src="../../assets/img/london.jpg"/>
+                            <ion-card-header>
+                                <ion-card-title class="CardTitle">London - England</ion-card-title>
+                                <ion-card-content class="CardContent">Best time to visit: All year</ion-card-content>
+                            </ion-card-header>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-card class="ionCards" (click)="planned()" ion-no-margin>
+                            <img src="../../assets/img/newyork.jpg" height="80%" width="80%"/>
+                            <ion-card-header>
+                                <ion-card-title class="CardTitle">New York</ion-card-title>
+                                <ion-card-content class="CardContent">Best time to visit: September - October</ion-card-content>
+                            </ion-card-header>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </div>
 
         <div class="tab" *ngIf="tabId === 'Partners'">
@@ -57,6 +109,8 @@
         </div>
     </div>
 
+</ion-content>
+<footer position="absolute">
     <ion-tabs>
         <ion-tab-bar class="tab-bottom">
             <ion-tab-button tab="home">
@@ -84,6 +138,4 @@
             </ion-tab-button>
         </ion-tab-bar>
     </ion-tabs>
-
-
-</ion-content>
+</footer>

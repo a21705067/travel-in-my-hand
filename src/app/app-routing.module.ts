@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'map', loadChildren: () => import('./map/map.module').then(m => m.MapPageModule) },
   { path: 'search', loadChildren: () => import('./search/search.module').then(m => m.SearchPageModule) },
   { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule) },
-  { path: 'mytravels', loadChildren: () => import('./mytravels/mytravels.module').then(m => m.MytravelsPageModule) },
+  { path: 'partners', loadChildren: () => import('./partners/mytravels.module').then(m => m.MytravelsPageModule) },
   { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule) },
   { path: 'newtravel', loadChildren: () => import('./newtravel/newtravel.module').then(m => m.NewtravelPageModule) },
   { path: 'journal', loadChildren: () => import('./journal/journal.module').then(m => m.JournalPageModule) },

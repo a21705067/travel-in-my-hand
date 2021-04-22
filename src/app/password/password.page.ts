@@ -39,9 +39,10 @@ export class PasswordPage implements OnInit {
 
   resetPassword(): void {
     const email = this.validationsForm.controls['email'].value;
-    console.log(email);
+
     this.authService.resetPassword(email)
         .then(() => {
+          alert('A password reset link has been sent to your email address');
           this.router.navigate(['/login']);
         }, err => {
           this.errorMessage = err.message;

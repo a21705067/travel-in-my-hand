@@ -20,7 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: MytravelsPage }])
+    RouterModule.forChild(routes)
   ],
   declarations: [MytravelsPage]
 })

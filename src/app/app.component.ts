@@ -39,7 +39,7 @@ export class AppComponent {
     },
     {
       title: 'Partners',
-      url: './settings',
+      url: './partners',
       icon: 'hand'
     },
     {
