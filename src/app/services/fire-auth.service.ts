@@ -9,7 +9,6 @@ import {FirestoreService} from './firestore.service';
 export class FireAuthService {
   authState: any = null;
 
-
   constructor(private firebaseService: FirestoreService, public afAuth: AngularFireAuth) {
   }
 
@@ -30,5 +29,6 @@ export class FireAuthService {
     console.log(email);
     return firebase.auth().sendPasswordResetEmail(email);
   }
+
 
 }

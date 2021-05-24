@@ -22,7 +22,11 @@ const routes: Routes = [
   { path: 'password', loadChildren: () => import('./password/password.module').then(m => m.PasswordPageModule) },
   { path: 'location', loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule) },
   { path: 'camera', loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule) },
-  { path: 'tabs', loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule) }
+  { path: 'tabs', loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule) },  {
+    path: 'logout',
+    loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
+  }
+
 
 
 

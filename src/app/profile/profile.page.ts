@@ -10,6 +10,7 @@ import {LoadingController} from '@ionic/angular';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+
   constructor(public photoService: PhotoService, public authService: FireAuthService, public router: Router,
               public loadingController: LoadingController) {
   }
@@ -25,4 +26,5 @@ export class ProfilePage implements OnInit {
     const loading = await this.loadingController.create({message: 'Loading', translucent: true, spinner: 'circles'});
     loading.present();
   }
+
 }

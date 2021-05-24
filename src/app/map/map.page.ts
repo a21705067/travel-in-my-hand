@@ -1,22 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {PhotoService} from '../services/photo.service';
-import {Router} from '@angular/router';
-import {ParkDataService} from '../park-data.service';
-import {Park} from '../park';
-import {Map, marker, tileLayer, icon} from 'leaflet';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {LoadingController} from '@ionic/angular';
+import {RouterModule, Router} from '@angular/router';
 import {FireAuthService} from '../services/fire-auth.service';
 
-
-const customIcon = icon({
-  iconUrl: 'assets/marker-icon.png',
-  shadowUrl: 'assets/marker-shadow.png',
-
-  iconSize:     [38, 60], // size of the icon
-  shadowSize:   [50, 64], // size of the shadow
-  iconAnchor:   [15, 50], // point of the icon which will correspond to marker's location
-  shadowAnchor: [4, 62],  // the same for the shadow
-  popupAnchor:  [3, -30] // point from which the popup should open relative to the iconAnchor
-});
+declare var google: any;
 
 @Component({
   selector: 'app-map',
@@ -25,79 +12,118 @@ const customIcon = icon({
 })
 export class MapPage implements OnInit {
 
-  /*
-  @ViewChild('map', {static: true}) mapElement;
-  map: GoogleMap;
-   */
+  map: any;
 
-  public parkData: Array<Park>;
-  @ViewChild('gmap') gmapElement: any;
-  public map: Map;
+  @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
-  constructor(public authService: FireAuthService, public router: Router,
-              private parkDataService: ParkDataService) {
+  infoWindows: any = [];
+  markers: any = [
+    {
+        title: "Universidade Lusófona",
+        latitude: "38.7564266",
+        longitude: "-9.1533085"
+    }
+  ];
+
+  addMarkersToMap(markers) {
+    for (let marker of markers) {
+        let position = new google.maps.LatLng(marker.latitude, marker.longitude);
+        let mapMarker = new google.maps.Marker({
+            position: position,
+            title: marker.title,
+            latitude: marker.latitude,
+            longitude: marker.longitude
+        });
+
+        mapMarker.setMap(this.map);
+        this.addInfoWindowToMarker(mapMarker);
+    }
+  }
+
+  addInfoWindowToMarker(marker) {
+    let infoWindowContent = '<div id="content">' +
+                              '<h2 id="firstHeading" class"firstHeading">' + marker.title + '</h2>' +
+                              '<p>Latitude: ' + marker.latitude + '</p>' +
+                              '<p>Longitude: ' + marker.longitude + '</p>' +
+                              '<ion-button id="navigate">Navigate</ion-button>' +
+                            '</div>';
+
+    let infoWindow = new google.maps.infoWindow({
+      content: infoWindowContent
+    });
+
+    marker.addListener('click', () => {
+        this.closeAllInfoWindows();
+        infoWindow.open(this.map, marker);
+
+        google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+            document.getElementById('navigate').addEventListener('click', () => {
+             console.log('navigate button clicked!');
+             window.open('https://www.google.com/maps/dir?api=1&destination=' + marker.latitude + ',' + marker.longitude);
+            });
+        });
+    });
+    this.infoWindows.push(infoWindow);
+  }
+
+  closeAllInfoWindows() {
+    for(let window of this.infoWindows) {
+        window.close();
+    }
+  }
+
+  constructor(public authService: FireAuthService, public router: Router, public loadingController: LoadingController) {
+  }
+
+  ionViewDidEnter(){
+    this.showMap();
+  }
+
+  showMap() {
+    const location = new google.maps.LatLng(38.7436883, -9.1952226);
+    const options = {
+        center: location,
+        zoom: 15,
+        disableDefaultUI: true
+    }
+    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+    this.addMarkersToMap(this.markers);
   }
 
   public ngOnInit(): void {
   }
 
-  public logout(): void {
-    this.authService.doLogout().then(() => this.router.navigate(['/login']), err => console.log(err));
-  }
-
-  ionViewDidEnter() {
-    // In setView add latLng and zoom
-    this.map = new Map('mapId3').setView([38.7071, -9.13549], 10);
-    tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}').addTo(this.map);
-    this.parkDataService.load().subscribe((data) => {
-      this.parkData = data;
-      this.leafletMap();
-    });
-  }
-
-  public leafletMap(): void {
-    if (this.parkData) {
-      for (const park of this.parkData) {
-        marker([park.lat, park.long], {icon: customIcon}).addTo(this.map)
-            .bindPopup(park.name + park.state)
-            .openPopup()
-            .on('click', () => {
-              this.markerClickHandler(marker, park.id);
-            });
-      }
+    public logout(): void {
+        this.authService.doLogout().then(() => this.router.navigate(['/login']), err => console.log(err));
     }
-  }
 
-  public markerClickHandler(markerCurr: any, theparkID: number) {
-    this.router.navigateByUrl(`tabs/map/detail/${theparkID}`);
-  }
+    public async loading(): Promise<void> {
+        const loading = await this.loadingController.create({message: 'Loading', translucent: true, spinner: 'circles'});
+        loading.present();
+    }
 
-  ionViewWillLeave() {
-    this.map.remove();
-  }
+    public profile(): void {
+        this.router.navigate(['/profile']);
+    }
 
-  /*
-  ionViewDidLoad() {
-    this.loadMap();
-  }
+    public travels(): void {
+        this.router.navigate(['/mytravels']);
+    }
 
-  loadMap() {
+    public maps(): void {
+        this.router.navigate(['/map']);
+    }
 
-    Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyAxjFMK1idLPoB2xxGVmSG-Z0fbrgCI-Ok',
-      'API_KEY_FOR_BROWSER_DEBUG': ''
-    });
+    public search(): void {
+        this.router.navigate(['/search']);
+    }
 
-    const mapOptions: GoogleMapOptions = {
-        controls: {
-          compass: true,
-          myLocation: true,
-          myLocationButton: true,
-          mapToolbar: true
-        }
-    };
+    public camera(): void {
+        this.router.navigate(['/camera']);
+    }
 
-    this.map = GoogleMaps.create('map_canvas', mapOptions);
-  }
-   */
+    public home(): void {
+        this.router.navigate(['/home']);
+    }
+
 }

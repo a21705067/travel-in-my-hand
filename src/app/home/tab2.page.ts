@@ -55,7 +55,7 @@ export class Tab2Page implements OnInit {
     }
 
     public camera(): void {
-            this.router.navigate(['/camera']);
+        this.router.navigate(['/camera']);
     }
 
 }
