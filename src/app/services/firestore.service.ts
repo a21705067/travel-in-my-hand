@@ -8,6 +8,8 @@ import {map, switchMap, takeUntil} from 'rxjs/operators';
 import {Photo} from './photo.service';
 import {LoadingController} from '@ionic/angular';
 import TaskState = firebase.storage.TaskState;
+import { auth } from 'firebase/app';
+
 
 @Injectable({
     providedIn: 'root'
@@ -21,6 +23,12 @@ export class FirestoreService {
     constructor(public af: AngularFirestore, public fireStorage: AngularFireStorage, public angularAuth: AngularFireAuth,
                 public loadingController: LoadingController) {
     }
+
+
+
+	reAuth(username: string, password: string) {
+		return this.angularAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(username, password))
+	}
 
     public async sendFile(imgData: string): Promise<void> {
         const currentUser = firebase.auth().currentUser;
@@ -73,4 +81,5 @@ export class FirestoreService {
         }
         return array;
     }
+
 }

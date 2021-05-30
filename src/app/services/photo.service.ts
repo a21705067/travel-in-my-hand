@@ -8,7 +8,6 @@ import {ActionSheetController} from '@ionic/angular';
     providedIn: 'root'
 })
 export class PhotoService {
-
     constructor(private camera: Camera, public fireStore: FirestoreService,
                 public actionSheetController: ActionSheetController) {
     }
@@ -30,6 +29,8 @@ export class PhotoService {
             ]
         });
         await actionSheet.present();
+
+
     }
 
     public loadSaved(): Observable<Array<Observable<any>>> {

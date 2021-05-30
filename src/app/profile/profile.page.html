@@ -1,40 +1,96 @@
 <ion-header xmlns="http://www.w3.org/1999/html">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
-    <ion-title align="Center">Profile</ion-title>
-  </ion-toolbar>
+  <ion-card color="light">
+    <div class="img-wrapper">
+      <img src="../../assets/img/tsubasa.jpg" />
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="camera-outline" color="medium">
+        </ion-icon>
+      </ion-button>
+    </div>
+    <ion-card-content class="ion-text-center">
+      <h2>{{fullName}}</h2>
+    </ion-card-content>
+  </ion-card>
 </ion-header>
 
 <ion-content>
 
-  <ion-list>
-    <ion-item>
-      <ion-icon name="person"></ion-icon>
-      <ion-input margin-start="20px" disabled></ion-input>
-    </ion-item>
+  <div class="tab-content">
+    <ion-tabs>
+      <ion-tab-bar slot="top">
+        <ion-tab-button (click)="showTab('Settings')" class="ion-tab-button">
+          <ion-label>Settings</ion-label>
+        </ion-tab-button>
+        <ion-tab-button (click)="showTab('Friends')" class="ion-tab-button">
+          <ion-label>Friends</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
 
-    <ion-item>
-      <ion-icon name="mail"></ion-icon>
-      <ion-input value="a21700054@alunos.ulht.pt" margin-start="20px" disabled></ion-input>
-    </ion-item>
+    <div slot="fixed" *ngIf="tabId === 'Settings'">
+      <ion-list id="profile-info" class="ion-padding" *ngIf="email">
+        <ion-item>
+          <ion-label>
+            <p>Happy thought</p>
+            <h2> {{ happy }} </h2>
+          </ion-label>
+        </ion-item>
 
-    <ion-item>
-      <ion-icon name="heart"></ion-icon>
-      <ion-input type="date" margin-start="20px"></ion-input>
-    </ion-item>
+        <ion-item name="email">
+          <ion-label>
+            <p>Email</p>
+            <h2> {{ email }} </h2>
+          </ion-label>
+        </ion-item>
 
-    <ion-item>
-      <ion-icon name="globe"></ion-icon>
-      <ion-input placeholder="Add country" margin-start="20px"></ion-input>
-    </ion-item>
+        <ion-item name="notifications">
+          <ion-label>
+            <p>Receive notifications</p>
+            <ion-toggle class="ion-float-right" [(ngModel)]="notifications"></ion-toggle>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
 
-    <ion-item>
-      <ion-icon name="call"></ion-icon>
-      <ion-input placeholder="Add phone number" margin-start="20px"></ion-input>
-    </ion-item>
-
-  </ion-list>
+    <div slot="fixed" *ngIf="tabId === 'Friends'">
+      <ion-list>
+        <ion-item *ngFor="let friend of userFriends">
+          <ion-avatar></ion-avatar>
+          <h2>{{friend.fullName}}</h2>
+          <ion-button icon="remove"></ion-button>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
 
 </ion-content>
+
+<footer position="absolute">
+  <ion-tabs>
+    <ion-tab-bar class="tab-bottom">
+      <ion-tab-button tab="home" (click)="home()">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="camera" (click)="camera()">
+        <ion-icon name="camera"></ion-icon>
+        <ion-label>Camera</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map" (click)="map()">
+        <ion-icon name="map"></ion-icon>
+        <ion-label>Map</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="search" (click)="search()">
+        <ion-icon name="search"></ion-icon>
+        <ion-label>Search</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="menu">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</footer>

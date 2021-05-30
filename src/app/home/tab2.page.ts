@@ -1,9 +1,9 @@
-import {Component, OnInit, NgModule} from '@angular/core';
-import {PhotoService} from '../services/photo.service';
+import {Component, OnInit, NgModule, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {FireAuthService} from '../services/fire-auth.service';
 import {RouterModule, Router} from '@angular/router';
-import {LoadingController} from '@ionic/angular';
+import {LoadingController, IonInfiniteScroll} from '@ionic/angular';
+import {FirestoreService} from '../services/firestore.service';
 
 @Component({
     selector: 'app-tab2',
@@ -12,22 +12,37 @@ import {LoadingController} from '@ionic/angular';
 })
 
 export class Tab2Page implements OnInit {
+    @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
     tabId: string = 'Personal';
+    travels: any;
 
     showTab (tabIdPageName) {
        this.tabId = tabIdPageName;
     }
 
-    public images: Observable<Array<Observable<any>>>;
+    loadData(event) {
+        setTimeout(() => {
+          console.log('Done');
+          event.target.complete();
 
-    constructor(public photoService: PhotoService, public authService: FireAuthService, public router: Router,
-                public loadingController: LoadingController) {
+          if (this.travels.length == 5) {
+            event.target.disabled = true;
+          }
+        }, 500);
     }
 
-    public ngOnInit() {
-        this.images = this.photoService.loadSaved();
+    toggleInfiniteScroll() {
+        this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
+      }
+
+    constructor(public authService: FireAuthService, public router: Router,
+                public loadingController: LoadingController, private db: FirestoreService) {
     }
+
+    public ngOnInit(
+
+    ) {}
 
     public logout(): void {
         this.authService.doLogout().then(() => this.router.navigate(['/login']), err => console.log(err));
@@ -42,8 +57,8 @@ export class Tab2Page implements OnInit {
         this.router.navigate(['/profile']);
     }
 
-    public travels(): void {
-        this.router.navigate(['/mytravels']);
+    public home(): void {
+        this.router.navigate(['/home']);
     }
 
     public map(): void {

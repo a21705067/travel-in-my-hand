@@ -30,5 +30,7 @@ export class FireAuthService {
     return firebase.auth().sendPasswordResetEmail(email);
   }
 
-
+  public getUID() {
+    return firebase.auth().currentUser.uid;
+  }
 }

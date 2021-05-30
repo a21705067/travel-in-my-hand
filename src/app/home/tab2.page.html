@@ -13,22 +13,22 @@
 
 <ion-content class="mainContent">
 
-    <ion-tabs position="absolute">
+    <ion-tabs>
         <ion-tab-bar slot="top">
-            <ion-tab-button (click)="showTab('Personal')">
+            <ion-tab-button (click)="showTab('Personal')" class="ion-tab-button">
                 <ion-label>Personal</ion-label>
             </ion-tab-button>
             <ion-tab-button (click)="showTab('Following')" class="ion-tab-button">
                 <ion-label>Following</ion-label>
             </ion-tab-button>
-            <ion-tab-button (click)="showTab('Partners')">
+            <ion-tab-button (click)="showTab('Partners')" class="ion-tab-button">
                 <ion-label>Partners</ion-label>
             </ion-tab-button>
         </ion-tab-bar>
     </ion-tabs>
 
     <div class="tab-content">
-        <div class="tab" *ngIf="tabId === 'Personal'">
+        <div class="tab" slot="fixed" *ngIf="tabId === 'Personal'">
             <ion-grid>
                 <ion-row>
                     <ion-col>
@@ -66,7 +66,7 @@
             </ion-grid>
         </div>
 
-        <div class="tab" *ngIf="tabId === 'Following'">
+        <div class="tab" slot="fixed" *ngIf="tabId === 'Following'">
             <ion-grid>
                 <ion-row>
                     <ion-col>
@@ -104,16 +104,25 @@
             </ion-grid>
         </div>
 
-        <div class="tab" *ngIf="tabId === 'Partners'">
+        <div class="tab" slot="fixed" *ngIf="tabId === 'Partners'">
             Partners Page Content
         </div>
+
+        <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll-content
+                    loadingSpinner="bubbles"
+                    loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
     </div>
 
 </ion-content>
+
 <footer position="absolute">
     <ion-tabs>
         <ion-tab-bar class="tab-bottom">
-            <ion-tab-button tab="home" selected="true">
+            <ion-tab-button tab="home" selected="true" (click)="home()">
                 <ion-icon name="home"></ion-icon>
                 <ion-label>Home</ion-label>
             </ion-tab-button>

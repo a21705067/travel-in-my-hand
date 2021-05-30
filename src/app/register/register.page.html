@@ -1,16 +1,23 @@
 <ion-header>
   <img src="../../assets/img/imagem_login.png" height=90% width=100%/>
 </ion-header>
+
 <ion-content class="form-content ion-padding">
   <form class="form" [formGroup]="validationsForm" (ngSubmit)="tryRegister(validationsForm.value)">
     <ion-item>
-      <ion-label position="floating" color="secondary">First Name</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label position="floating" color="secondary">Full Name</ion-label>
+      <ion-input type="text" formControlName="fullName"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating" color="secondary">Last Name</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validationMessages.fullName">
+        <div class="error-message"
+             *ngIf="validationsForm.get('fullName').hasError(validation.type) &&
+            (validationsForm.get('fullName') || validationsForm.get('fullName').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
     <ion-item>
       <ion-label position="floating" color="secondary">Email</ion-label>
       <ion-input type="text" formControlName="email"></ion-input>
@@ -24,6 +31,7 @@
         </div>
       </ng-container>
     </div>
+
     <ion-item>
       <ion-label position="floating" color="secondary">Password</ion-label>
       <ion-input type="password" formControlName="password"></ion-input>
@@ -37,12 +45,14 @@
         </div>
       </ng-container>
     </div>
+
     <ion-button class="submit-btn" expand="block" color="secondary"
                 type="submit" [disabled]="!validationsForm.valid">Register
     </ion-button>
     <label class="error-message">{{errorMessage}}</label>
     <label class="success-message">{{successMessage}}</label>
   </form>
+
   <p class="go-to-login" align="Center"> Already have an account?<a (click)="goLoginPage()"> Try to Log In </a></p>
 
   <div class="ion-text-center"><br>By continuing, you agree to accept our <a (click)="goLoginPage()">Privacy Policy & Terms of Service</a>.</div>
