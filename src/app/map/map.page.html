@@ -8,23 +8,23 @@
 
 <footer position="absolute">
   <ion-tabs>
-    <ion-tab-bar class="tab-bottom" (click)="home()">
-      <ion-tab-button tab="home">
+    <ion-tab-bar class="tab-bottom">
+      <ion-tab-button tab="home" routerLink="/home">
         <ion-icon name="home"></ion-icon>
         <ion-label>Home</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="camera" (click)="camera()">
+      <ion-tab-button tab="camera" routerLink="/camera">
         <ion-icon name="camera"></ion-icon>
         <ion-label>Camera</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="map" selected="true">
+      <ion-tab-button tab="map" selected="true" routerLink="/map">
         <ion-icon name="map"></ion-icon>
         <ion-label>Map</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="search" (click)="search()">
+      <ion-tab-button tab="search" routerLink="/search">
         <ion-icon name="search"></ion-icon>
         <ion-label>Search</ion-label>
       </ion-tab-button>

@@ -33,4 +33,5 @@ export class FireAuthService {
   public getUID() {
     return firebase.auth().currentUser.uid;
   }
+
 }

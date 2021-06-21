@@ -1,6 +1,7 @@
 import {Component, OnInit, NgModule, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {FireAuthService} from '../services/fire-auth.service';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import {RouterModule, Router} from '@angular/router';
 import {LoadingController, IonInfiniteScroll} from '@ionic/angular';
 import {FirestoreService} from '../services/firestore.service';
@@ -15,7 +16,10 @@ export class Tab2Page implements OnInit {
     @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
     tabId: string = 'Personal';
-    travels: any;
+    travels
+    user: string
+    mainuser: AngularFirestoreDocument
+    placeID: any
 
     showTab (tabIdPageName) {
        this.tabId = tabIdPageName;
@@ -37,7 +41,21 @@ export class Tab2Page implements OnInit {
       }
 
     constructor(public authService: FireAuthService, public router: Router,
-                public loadingController: LoadingController, private db: FirestoreService) {
+                public loadingController: LoadingController, private db: AngularFirestore) {
+
+               this.user = this.authService.getUID();
+               this.mainuser = db.collection('utilizador').doc(this.user);
+
+//                this.places = db.collection('places').get().subscribe()
+
+//                this.travels = this.mainuser.collection('myTravels').get()
+//                    .subscribe((querySnapshot) => {
+//                      querySnapshot.forEach((dados: any) => {
+//                      this.placeID.push(dados.placeID)
+//                      });
+//                });
+
+
     }
 
     public ngOnInit(
@@ -51,26 +69,6 @@ export class Tab2Page implements OnInit {
     public async loading(): Promise<void> {
         const loading = await this.loadingController.create({message: 'Loading', translucent: true, spinner: 'circles'});
         loading.present();
-    }
-
-    public profile(): void {
-        this.router.navigate(['/profile']);
-    }
-
-    public home(): void {
-        this.router.navigate(['/home']);
-    }
-
-    public map(): void {
-        this.router.navigate(['/map']);
-    }
-
-    public search(): void {
-        this.router.navigate(['/search']);
-    }
-
-    public camera(): void {
-        this.router.navigate(['/camera']);
     }
 
 }

@@ -5,3 +5,33 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+<footer position="absolute">
+  <ion-tabs>
+    <ion-tab-bar class="tab-bottom">
+      <ion-tab-button tab="home" selected="true" routerLink="/home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="camera" routerLink="/camera">
+        <ion-icon name="camera"></ion-icon>
+        <ion-label>Camera</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map" routerLink="/map">
+        <ion-icon name="map"></ion-icon>
+        <ion-label>Map</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="search" routerLink="/search">
+        <ion-icon name="search"></ion-icon>
+        <ion-label>Search</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="menu">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</footer>

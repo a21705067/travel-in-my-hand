@@ -15,7 +15,7 @@
 
 <ion-content>
 
-  <div class="tab-content">
+  <div>
     <ion-tabs>
       <ion-tab-bar slot="top">
         <ion-tab-button (click)="showTab('Settings')" class="ion-tab-button">
@@ -27,7 +27,7 @@
       </ion-tab-bar>
     </ion-tabs>
 
-    <div slot="fixed" *ngIf="tabId === 'Settings'">
+    <div class="tab-content" *ngIf="tabId === 'Settings'">
       <ion-list id="profile-info" class="ion-padding" *ngIf="email">
         <ion-item>
           <ion-label>
@@ -50,9 +50,13 @@
           </ion-label>
         </ion-item>
       </ion-list>
+
+      <div class="button">
+      <ion-button class="button button-medium">Edit</ion-button>
+      </div>
     </div>
 
-    <div slot="fixed" *ngIf="tabId === 'Friends'">
+    <div class="tab-content" *ngIf="tabId === 'Friends'">
       <ion-list>
         <ion-item *ngFor="let friend of userFriends">
           <ion-avatar></ion-avatar>
@@ -68,22 +72,22 @@
 <footer position="absolute">
   <ion-tabs>
     <ion-tab-bar class="tab-bottom">
-      <ion-tab-button tab="home" (click)="home()">
+      <ion-tab-button tab="home" routerLink="/home">
         <ion-icon name="home"></ion-icon>
         <ion-label>Home</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="camera" (click)="camera()">
+      <ion-tab-button tab="camera" routerLink="/camera">
         <ion-icon name="camera"></ion-icon>
         <ion-label>Camera</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="map" (click)="map()">
+      <ion-tab-button tab="map" routerLink="/map">
         <ion-icon name="map"></ion-icon>
         <ion-label>Map</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="search" (click)="search()">
+      <ion-tab-button tab="search" routerLink="/search">
         <ion-icon name="search"></ion-icon>
         <ion-label>Search</ion-label>
       </ion-tab-button>

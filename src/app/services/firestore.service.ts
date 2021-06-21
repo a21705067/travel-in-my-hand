@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireStorage} from '@angular/fire/storage';
+import { AngularFirestore } from 'angularfire2/firestore';
 import {Observable, Subject} from 'rxjs';
 import * as firebase from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
@@ -10,21 +10,19 @@ import {LoadingController} from '@ionic/angular';
 import TaskState = firebase.storage.TaskState;
 import { auth } from 'firebase/app';
 
-
 @Injectable({
     providedIn: 'root'
 })
-export class FirestoreService {
 
+export class FirestoreService {
     private static USERS_KEY = 'users';
     private static IMAGES_KEY = 'images';
     private unsubscribe: Subject<void> = new Subject<void>();
 
     constructor(public af: AngularFirestore, public fireStorage: AngularFireStorage, public angularAuth: AngularFireAuth,
                 public loadingController: LoadingController) {
+
     }
-
-
 
 	reAuth(username: string, password: string) {
 		return this.angularAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(username, password))

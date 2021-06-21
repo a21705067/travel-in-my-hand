@@ -4,26 +4,32 @@ import { FireAuthService } from '../services/fire-auth.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { RouterModule, Router } from '@angular/router';
 import { LoadingController, AlertController } from '@ionic/angular';
+import {Observable, Subject} from 'rxjs';
+import {switchMap, takeUntil} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Friend} from '../models/friends';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
+
 export class ProfilePage implements OnInit {
+
+  private unsubscribe: Subject<void> = new Subject<void>();
+  user = this.authService.getUID();
+  userFriends: Friend[];
 
   tabId: string = 'Settings';
   mainuser: AngularFirestoreDocument
-  userFriend: AngularFirestoreDocument
   userProfile
-  userFriends
   fullName: string
   email: string
   happy: string
   notifications: boolean
   picture: string
-  fullNameFriend: string
-  friendID: string
+
 
   showTab (tabIdPageName) {
          this.tabId = tabIdPageName;
@@ -31,10 +37,9 @@ export class ProfilePage implements OnInit {
 
   constructor(public photoService: PhotoService, public authService: FireAuthService, public router: Router,
               public loadingController: LoadingController, private db: AngularFirestore, private changeRef: ChangeDetectorRef,
-              private alertController: AlertController) {
+              private alertController: AlertController, private fs: FirestoreService) {
 
-               this.mainuser = db.doc('profiles/' + this.authService.getUID());
-               this.userFriend = db.doc('friends/' + this.authService.getUID());
+               this.mainuser = db.collection('utilizador').doc(this.user);
                this.userProfile = this.mainuser.valueChanges().subscribe(dados => {
                     this.fullName = dados.fullName,
                     this.email = dados.email,
@@ -42,12 +47,10 @@ export class ProfilePage implements OnInit {
                     this.notifications = dados.notifications,
                     this.picture = dados.picture
                });
-               this.userFriends = this.userFriend.valueChanges().subscribe(dados => {
-                    this.fullNameFriend = dados.fullName,
-                    this.friendID = dados.friendID
-               });
 
-//                this.changeRef.detectChanges();
+               this.fs.getFriends().subscribe(friends => {
+                    this.userFriends = friends;
+               })
   }
 
   ngOnInit() {
@@ -62,20 +65,12 @@ export class ProfilePage implements OnInit {
     loading.present();
   }
 
-    public home(): void {
-        this.router.navigate(['/home']);
-    }
-
-    public map(): void {
-        this.router.navigate(['/map']);
-    }
-
-    public search(): void {
-        this.router.navigate(['/search']);
-    }
-
-    public camera(): void {
-        this.router.navigate(['/camera']);
-    }
+//   public getFriends(): Observable<Array<String>> {
+//       return this.user
+//           .pipe(takeUntil(this.unsubscribe),
+//               switchMap(user => {
+//                   return this.mainuser.collection('friends').valueChanges();
+//               }));
+//   }
 
 }
