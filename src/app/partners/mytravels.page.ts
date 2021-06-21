@@ -42,19 +42,4 @@ export class MytravelsPage implements OnInit {
     this.router.navigate(['']);
   }
 
-  public home(): void {
-      this.router.navigate(['/home']);
-  }
-
-  public map(): void {
-      this.router.navigate(['/map']);
-  }
-
-  public search(): void {
-      this.router.navigate(['/search']);
-  }
-
-  public camera(): void {
-          this.router.navigate(['/camera']);
-  }
 }

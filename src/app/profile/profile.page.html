@@ -59,9 +59,9 @@
     <div class="tab-content" *ngIf="tabId === 'Friends'">
       <ion-list>
         <ion-item *ngFor="let friend of userFriends">
-          <ion-avatar></ion-avatar>
-          <h2>{{friend.fullName}}</h2>
-          <ion-button icon="remove"></ion-button>
+          <ion-avatar>{{friend.friendPicture}}</ion-avatar>
+           {{friend.friendFullName}}
+          <ion-icon name="close-circle-outline" style="position: absolute; right: 25px; important;" onClick()="removeFriend({{friend.friendID}})"></ion-icon>
         </ion-item>
       </ion-list>
     </div>

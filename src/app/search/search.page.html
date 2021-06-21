@@ -1,26 +1,45 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
-    <ion-title align="Center">Search</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="logout()">
-        <ion-icon name="log-out"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
+<ion-content padding-bottom>
   <ion-searchbar (ionInput)="filterList($event)"></ion-searchbar>
   <ion-list>
-      <ion-card class="card" *ngFor="let item of DestinationList" (click)="location(item.Location,item.Country,item.Img)">
-        <img [src]="item.Img" height="180" width="180">
+      <ion-card class="card" *ngFor="let item of DestinationList" (click)="location(item.id)">
+        <img src="../../{{item.picture}}" width="130px" height="130px">
         <ion-card-header>
-          <ion-card-title>{{ item.Location }}</ion-card-title>
-          <ion-card-subtitle class="ion-float-left">{{ item.Country }}</ion-card-subtitle>
+          <ion-card-title>{{item.name}} - {{item.country}}</ion-card-title>
+          <ion-card-content class="CardContent">
+            <b>Category: </b> {{item.category}} <br>
+            <b>Hashtags: </b> {{item.hashtags}} <br>
+          </ion-card-content>
         </ion-card-header>
       </ion-card>
   </ion-list>
 </ion-content>
+
+<footer position="absolute">
+  <ion-tabs>
+    <ion-tab-bar class="tab-bottom">
+      <ion-tab-button tab="home" routerLink="/home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="camera" routerLink="/camera">
+        <ion-icon name="camera"></ion-icon>
+        <ion-label>Camera</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map" routerLink="/map">
+        <ion-icon name="map"></ion-icon>
+        <ion-label>Map</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="search" selected="true" routerLink="/search">
+        <ion-icon name="search"></ion-icon>
+        <ion-label>Search</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="menu">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</footer>

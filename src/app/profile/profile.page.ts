@@ -1,14 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Injectable } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
 import { FireAuthService } from '../services/fire-auth.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { RouterModule, Router } from '@angular/router';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { Observable, Subject } from 'rxjs';
-// import { switchMap, takeUntil } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { FriendsService } from "../shared/friends.service";
-// import {Friend} from '../models/friends';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -17,13 +14,8 @@ import { FriendsService } from "../shared/friends.service";
 })
 
 export class ProfilePage implements OnInit {
-
-  private unsubscribe: Subject<void> = new Subject<void>();
-  user = this.authService.getUID();
-//   userFriends: Friend[];
-
   tabId: string = 'Settings';
-  mainuser: AngularFirestoreDocument
+  userCollection: AngularFirestoreDocument
   userProfile
   userFriends
   fullName: string
@@ -32,6 +24,8 @@ export class ProfilePage implements OnInit {
   notifications: boolean
   picture: string
 
+  private unsubscribe: Subject<void> = new Subject<void>();
+
 
   showTab (tabIdPageName) {
          this.tabId = tabIdPageName;
@@ -39,10 +33,11 @@ export class ProfilePage implements OnInit {
 
   constructor(public photoService: PhotoService, public authService: FireAuthService, public router: Router,
               public loadingController: LoadingController, private db: AngularFirestore, private changeRef: ChangeDetectorRef,
-              private alertController: AlertController, private fs: FriendsService) {
+              private alertController: AlertController) {
 
-               this.mainuser = db.collection('utilizador').doc(this.user);
-               this.userProfile = this.mainuser.valueChanges().subscribe(dados => {
+               this.userCollection = db.collection('utilizador').doc(this.authService.getUID());
+
+               this.userProfile = this.userCollection.valueChanges().subscribe(dados => {
                     this.fullName = dados.fullName,
                     this.email = dados.email,
                     this.happy = dados.happy,
@@ -50,14 +45,8 @@ export class ProfilePage implements OnInit {
                     this.picture = dados.picture
                });
 
-               getFriends = () =>
-                   this.fs
-                     .getFriends()
-                     .subscribe(res => (this.userFriends = res));
+               this.userCollection.collection('friends').valueChanges().subscribe(dados => (this.userFriends = dados));
 
-//                this.fs.getFriends().subscribe(friends => {
-//                     this.userFriends = friends;
-//                })
   }
 
   ngOnInit() {
@@ -71,5 +60,7 @@ export class ProfilePage implements OnInit {
     const loading = await this.loadingController.create({message: 'Loading', translucent: true, spinner: 'circles'});
     loading.present();
   }
+
+  public removeFriend() {}
 
 }

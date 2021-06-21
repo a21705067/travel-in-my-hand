@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
-import {FirestoreService} from './firestore.service';
+import { FirestoreService } from './firestore.service';
+import { RouterModule, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import {FirestoreService} from './firestore.service';
 export class FireAuthService {
   authState: any = null;
 
-  constructor(private firebaseService: FirestoreService, public afAuth: AngularFireAuth) {
+  constructor(private firebaseService: FirestoreService, public afAuth: AngularFireAuth, public router: Router) {
   }
 
   public doRegister(value: { email: string, password: string }): Promise<firebase.auth.UserCredential> {

@@ -1,4 +1,8 @@
-.card {
-  background-color: #3880ff;
-  --ion-text-color: #ffffff;
+.ionCards {
+    width: 90%;
+    height: 90%;
+}
+
+ion-content {
+  --padding-bottom: 50px;
 }

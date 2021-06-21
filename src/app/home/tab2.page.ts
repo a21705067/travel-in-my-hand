@@ -5,6 +5,8 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import {RouterModule, Router} from '@angular/router';
 import {LoadingController, IonInfiniteScroll} from '@ionic/angular';
 import {FirestoreService} from '../services/firestore.service';
+import { map } from 'rxjs/operators';
+import { combineLatest } from 'rxjs/observable/combineLatest';
 
 @Component({
     selector: 'app-tab2',
@@ -17,9 +19,10 @@ export class Tab2Page implements OnInit {
 
     tabId: string = 'Personal';
     travels
-    user: string
+    userTravels
+    friendsTravels
+    partnersDeals
     mainuser: AngularFirestoreDocument
-    placeID: any
 
     showTab (tabIdPageName) {
        this.tabId = tabIdPageName;
@@ -43,18 +46,12 @@ export class Tab2Page implements OnInit {
     constructor(public authService: FireAuthService, public router: Router,
                 public loadingController: LoadingController, private db: AngularFirestore) {
 
-               this.user = this.authService.getUID();
-               this.mainuser = db.collection('utilizador').doc(this.user);
+               this.mainuser = db.collection('utilizador').doc(this.authService.getUID());
 
-//                this.places = db.collection('places').get().subscribe()
+              // this.mainuser.collection('myTravels').valueChanges().subscribe(dados => (this.myTravels = dados));
 
-//                this.travels = this.mainuser.collection('myTravels').get()
-//                    .subscribe((querySnapshot) => {
-//                      querySnapshot.forEach((dados: any) => {
-//                      this.placeID.push(dados.placeID)
-//                      });
-//                });
-
+               this.mainuser.collection('myTravels').valueChanges().subscribe(dados => (this.userTravels = dados));
+               db.collection('partnersDeals').valueChanges().subscribe(dados => (this.partnersDeals = dados));
 
     }
 

@@ -20,7 +20,7 @@ export class SearchPage implements OnInit {
   }
 
   ngOnInit() {
-    this.firestore.collection(`Destination`).valueChanges()
+    this.firestore.collection('places').valueChanges()
         .subscribe(DestinationList => {
           this.DestinationList = DestinationList;
           this.loadedDestinationList = DestinationList;

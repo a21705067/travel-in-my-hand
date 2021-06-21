@@ -16,19 +16,21 @@
     <ion-row>
       <ion-col>
         <ion-card class="ionCards" (click)="geostar()">
-          <img src="../../assets/icon/geostar.png" height="180" width="180"/>
+          <img src="../../assets/img/xpto.png" height="180" width="180"/>
           <ion-card-header>
-            <ion-card-title class="CardTitle">GeoStar</ion-card-title>
-            <ion-card-content class="CardContent">The dreams begin in us, the travels begin in GeoStar</ion-card-content>
+            <ion-card-title class="CardTitle">XPTO Travels</ion-card-title>
+            <ion-card-content class="CardContent">We can take you anywhere</ion-card-content>
+<!--            <ion-card-content class="CardContent">The dreams begin in us, the travels begin in GeoStar</ion-card-content>-->
           </ion-card-header>
         </ion-card>
       </ion-col>
       <ion-col>
         <ion-card class="ionCards" (click)="topatlantico()">
-          <img src="../../assets/icon/TopAtlantico.png" height="180" width="180"/>
+          <img src="../../assets/img/tuga_venture.png" height="180" width="180"/>
           <ion-card-header>
-            <ion-card-title class="CardTitle">Top Atlântico</ion-card-title>
-            <ion-card-content class="CardContent">Let's embrace the world together <br> <br></ion-card-content>
+            <ion-card-title class="CardTitle">Tuga Venture</ion-card-title>
+            <ion-card-content class="CardContent">We make travel fun</ion-card-content>
+<!--            <ion-card-content class="CardContent">Let's embrace the world together <br> <br></ion-card-content>-->
           </ion-card-header>
         </ion-card>
       </ion-col>
@@ -38,19 +40,21 @@
     <ion-row>
       <ion-col>
         <ion-card class="ionCards" (click)="abreu()">
-          <img src="../../assets/icon/viagensAbreu.png" height="180" width="180"/>
+          <img src="../../assets/img/backpack.png" height="180" width="180"/>
           <ion-card-header>
-            <ion-card-title class="CardTitle">Abreu</ion-card-title>
-            <ion-card-content class="CardContent">The travel of your life</ion-card-content>
+            <ion-card-title class="CardTitle">Backpack</ion-card-title>
+            <ion-card-content class="CardContent">Explore the world</ion-card-content>
+<!--            <ion-card-content class="CardContent">The travel of your life</ion-card-content>-->
           </ion-card-header>
         </ion-card>
       </ion-col>
       <ion-col>
         <ion-card class="ionCards" (click)="besttravel()">
-          <img src="../../assets/icon/Bestravel.png" height="180" width="180"/>
+          <img src="../../assets/img/sunny.png" height="180" width="180"/>
           <ion-card-header>
-            <ion-card-title class="CardTitle">Best Travel</ion-card-title>
-            <ion-card-content class="CardContent">Discover your next travel</ion-card-content>
+            <ion-card-title class="CardTitle">Sunny Funyy</ion-card-title>
+            <ion-card-content class="CardContent">Your partner for hot vacations</ion-card-content>
+<!--            <ion-card-content class="CardContent">Discover your next travel</ion-card-content>-->
           </ion-card-header>
         </ion-card>
       </ion-col>
@@ -61,22 +65,22 @@
 <footer position="absolute">
   <ion-tabs>
     <ion-tab-bar class="tab-bottom">
-      <ion-tab-button tab="home" (click)="home()">
+      <ion-tab-button tab="home" routerLink="/home">
         <ion-icon name="home"></ion-icon>
         <ion-label>Home</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="camera" (click)="camera()">
+      <ion-tab-button tab="camera" routerLink="/camera">
         <ion-icon name="camera"></ion-icon>
         <ion-label>Camera</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="map" (click)="map()">
+      <ion-tab-button tab="map" routerLink="/map">
         <ion-icon name="map"></ion-icon>
         <ion-label>Map</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="search" (click)="search()">
+      <ion-tab-button tab="search" routerLink="/search">
         <ion-icon name="search"></ion-icon>
         <ion-label>Search</ion-label>
       </ion-tab-button>
