@@ -12,7 +12,7 @@ export class FriendsService {
     user = firebase.auth().currentUser.uid
 
   constructor() {
-      this.friends = this.af.collection('utilizador').doc(this.user).collection('friends').valueChanges();
+      this.friends = this.af.collection('utilizador').doc(this.user).collection('friends').snapshotChanges();
   }
 
   getFriends() {
