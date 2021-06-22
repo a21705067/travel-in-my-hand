@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ProfilePage } from './profile.page';
 import { SettingsPage } from '../settings/settings.page';
+import { SuperTabsModule } from '@ionic-super-tabs/angular';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: ProfilePage }])
+    RouterModule.forChild([{ path: '', component: ProfilePage }]),
+    SuperTabsModule
   ],
   declarations: [ProfilePage]
 })

@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
     <ion-title align="Center">Settings</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,27 +8,57 @@
   <ion-list>
     <ion-item>
       <ion-label>Notifications</ion-label>
-      <ion-toggle slot="end" name="Notifications" color="success" checked="false"></ion-toggle>
+      <ion-toggle slot="end" name="Notifications" color="primary" (ngModelChange)="updateProfile($event)" [(ngModel)]="notifications"></ion-toggle>
     </ion-item>
 
     <ion-item>
       <ion-label>Newsletter</ion-label>
-      <ion-toggle slot="end" name="Newsletter" color="success" checked="false"></ion-toggle>
+      <ion-toggle slot="end" name="Newsletter" color="primary" (ngModelChange)="updateProfile($event)" [(ngModel)]="newsletter"></ion-toggle>
     </ion-item>
 
     <ion-item>
       <ion-label>Camera Access</ion-label>
-      <ion-toggle slot="end" name="Camera Access" color="success" checked="false"></ion-toggle>
+      <ion-toggle slot="end" name="Camera Access" color="primary" (ngModelChange)="updateProfile($event)" [(ngModel)]="camera"></ion-toggle>
     </ion-item>
 
     <ion-item>
       <ion-label>Gallery Access</ion-label>
-      <ion-toggle slot="end" name="Gallery Access" color="success" checked="false"></ion-toggle>
+      <ion-toggle slot="end" name="Gallery Access" color="primary" (ngModelChange)="updateProfile($event)" [(ngModel)]="gallery"></ion-toggle>
     </ion-item>
 
     <ion-item>
       <ion-label>Location</ion-label>
-      <ion-toggle slot="end" name="Location" color="success" checked="false"></ion-toggle>
+      <ion-toggle slot="end" name="Location" color="primary" (ngModelChange)="updateProfile($event)" [(ngModel)]="location"></ion-toggle>
     </ion-item>
   </ion-list>
 </ion-content>
+
+<footer>
+  <ion-toolbar>
+    <ion-tab-bar class="tab-bottom">
+      <ion-tab-button tab="home" routerLink="/home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="camera" routerLink="/camera">
+        <ion-icon name="camera"></ion-icon>
+        <ion-label>Camera</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map" routerLink="/map">
+        <ion-icon name="map"></ion-icon>
+        <ion-label>Map</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="search" routerLink="/search">
+        <ion-icon name="search"></ion-icon>
+        <ion-label>Search</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="menu">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-toolbar>
+</footer>

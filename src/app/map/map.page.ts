@@ -102,28 +102,4 @@ export class MapPage implements OnInit {
         loading.present();
     }
 
-    public profile(): void {
-        this.router.navigate(['/profile']);
-    }
-
-    public travels(): void {
-        this.router.navigate(['/mytravels']);
-    }
-
-    public maps(): void {
-        this.router.navigate(['/map']);
-    }
-
-    public search(): void {
-        this.router.navigate(['/search']);
-    }
-
-    public camera(): void {
-        this.router.navigate(['/camera']);
-    }
-
-    public home(): void {
-        this.router.navigate(['/home']);
-    }
-
 }

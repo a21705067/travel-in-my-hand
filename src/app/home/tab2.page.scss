@@ -1,32 +1,5 @@
-.mainContent {
-  margin-top: 50px;
-}
-
-.tab-content {
-    margin-top: 60px;
-    width: 100%;
-    height: 100%;
-    --padding-bottom: 50px;
-}
-
-.tab-bottom {
-    slot: bottom;
-}
-
 .ionCards {
     width: 90%;
     height: 90%;
 }
 
-.ion-tab-button {
-    border-bottom: solid #0000FF 2px;
-}
-
-ion-tabs.sticky {
-    position: sticky;
-}
-
-ion-tab-button.tab-selected {
-  color: var(--ion-color-secondary) !important;
-  background: var(--ion-color-primary) !important;
-}

@@ -13,64 +13,69 @@
   </ion-card>
 </ion-header>
 
-<ion-content>
+<super-tabs>
+  <super-tabs-toolbar slot="top">
+    <super-tab-button>
+      <ion-icon name="person-outline" ></ion-icon>
+      <ion-label>Settings</ion-label>
+    </super-tab-button>
+    <super-tab-button>
+      <ion-icon name="people-outline" ></ion-icon>
+      <ion-label>Friends</ion-label>
+    </super-tab-button>
+  </super-tabs-toolbar>
 
-  <div>
-    <ion-tabs>
-      <ion-tab-bar slot="top">
-        <ion-tab-button (click)="showTab('Settings')" class="ion-tab-button">
-          <ion-label>Settings</ion-label>
-        </ion-tab-button>
-        <ion-tab-button (click)="showTab('Friends')" class="ion-tab-button">
-          <ion-label>Friends</ion-label>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
+  <super-tabs-container>
+    <super-tab>
+      <ion-content>
+        <div>
+          <ion-list id="profile-info" class="ion-padding" *ngIf="email">
+            <ion-item>
+              <ion-label>
+                <p>Happy thought</p>
+                <h2> {{ happy }} </h2>
+              </ion-label>
+            </ion-item>
 
-    <div class="tab-content" *ngIf="tabId === 'Settings'">
-      <ion-list id="profile-info" class="ion-padding" *ngIf="email">
-        <ion-item>
-          <ion-label>
-            <p>Happy thought</p>
-            <h2> {{ happy }} </h2>
-          </ion-label>
-        </ion-item>
+            <ion-item name="email">
+              <ion-label>
+                <p>Email</p>
+                <h2> {{ email }} </h2>
+              </ion-label>
+            </ion-item>
 
-        <ion-item name="email">
-          <ion-label>
-            <p>Email</p>
-            <h2> {{ email }} </h2>
-          </ion-label>
-        </ion-item>
+            <ion-item name="birthday">
+              <ion-label>
+                <p>Age</p>
+                <h2> {{ age }} </h2>
+              </ion-label>
+            </ion-item>
+          </ion-list>
 
-        <ion-item name="notifications">
-          <ion-label>
-            <p>Receive notifications</p>
-            <ion-toggle class="ion-float-right" [(ngModel)]="notifications"></ion-toggle>
-          </ion-label>
-        </ion-item>
-      </ion-list>
+          <div class="button">
+            <ion-button class="button button-medium">Edit</ion-button>
+          </div>
+        </div>
+      </ion-content>
+    </super-tab>
+    <super-tab>
+      <ion-content>
+        <div>
+          <ion-list>
+            <ion-item *ngFor="let friend of userFriends">
+              <ion-avatar>{{friend.friendPicture}}</ion-avatar>
+              {{friend.friendFullName}}
+              <ion-icon name="close-circle-outline" style="position: absolute; right: 25px; important;" onClick()="removeFriend({{friend.friendID}})"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-content>
+    </super-tab>
+  </super-tabs-container>
+</super-tabs>
 
-      <div class="button">
-      <ion-button class="button button-medium">Edit</ion-button>
-      </div>
-    </div>
-
-    <div class="tab-content" *ngIf="tabId === 'Friends'">
-      <ion-list>
-        <ion-item *ngFor="let friend of userFriends">
-          <ion-avatar>{{friend.friendPicture}}</ion-avatar>
-           {{friend.friendFullName}}
-          <ion-icon name="close-circle-outline" style="position: absolute; right: 25px; important;" onClick()="removeFriend({{friend.friendID}})"></ion-icon>
-        </ion-item>
-      </ion-list>
-    </div>
-  </div>
-
-</ion-content>
-
-<footer position="absolute">
-  <ion-tabs>
+<footer>
+  <ion-toolbar>
     <ion-tab-bar class="tab-bottom">
       <ion-tab-button tab="home" routerLink="/home">
         <ion-icon name="home"></ion-icon>
@@ -96,5 +101,5 @@
         <ion-menu-button autoHide="false"></ion-menu-button>
       </ion-tab-button>
     </ion-tab-bar>
-  </ion-tabs>
+  </ion-toolbar>
 </footer>

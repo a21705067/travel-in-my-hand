@@ -23,10 +23,7 @@ const routes: Routes = [
   { path: 'location', loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule) },
   { path: 'camera', loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule) },
   { path: 'tabs', loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule) },
-  {
-    path: 'logout',
-    loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
-  }
+  { path: 'logout', loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule) }
 ];
 
 @NgModule({

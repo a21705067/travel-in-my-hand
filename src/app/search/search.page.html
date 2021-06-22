@@ -14,8 +14,8 @@
   </ion-list>
 </ion-content>
 
-<footer position="absolute">
-  <ion-tabs>
+<footer>
+  <ion-toolbar>
     <ion-tab-bar class="tab-bottom">
       <ion-tab-button tab="home" routerLink="/home">
         <ion-icon name="home"></ion-icon>
@@ -32,7 +32,7 @@
         <ion-label>Map</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="search" selected="true" routerLink="/search">
+      <ion-tab-button tab="search" routerLink="/search">
         <ion-icon name="search"></ion-icon>
         <ion-label>Search</ion-label>
       </ion-tab-button>
@@ -41,5 +41,5 @@
         <ion-menu-button autoHide="false"></ion-menu-button>
       </ion-tab-button>
     </ion-tab-bar>
-  </ion-tabs>
+  </ion-toolbar>
 </footer>

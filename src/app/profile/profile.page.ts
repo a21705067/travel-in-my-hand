@@ -23,6 +23,7 @@ export class ProfilePage implements OnInit {
   happy: string
   notifications: boolean
   picture: string
+  age: number
 
   private unsubscribe: Subject<void> = new Subject<void>();
 
@@ -42,7 +43,8 @@ export class ProfilePage implements OnInit {
                     this.email = dados.email,
                     this.happy = dados.happy,
                     this.notifications = dados.notifications,
-                    this.picture = dados.picture
+                    this.picture = dados.picture,
+                    this.age = dados.age
                });
 
                this.userCollection.collection('friends').valueChanges().subscribe(dados => (this.userFriends = dados));

@@ -13,6 +13,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import {SuperTabsModule} from '@ionic-super-tabs/angular';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyDuM8nsn9COpIrS3H54-zVym669DCtzir8",
@@ -35,7 +36,8 @@ export const firebaseConfig = {
         AngularFirestoreModule,
         AngularFireDatabaseModule,
         AngularFireStorageModule,
-        AppRoutingModule
+        AppRoutingModule,
+        SuperTabsModule.forRoot()
     ],
     providers: [
         StatusBar,

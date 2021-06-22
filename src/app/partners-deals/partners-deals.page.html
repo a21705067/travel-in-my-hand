@@ -1,0 +1,20 @@
+<ion-content>
+    <ion-grid>
+        <ion-row *ngFor="let deal of partnersDeals">
+            <ion-col>
+                <ion-card class="ionCards" (click)="planned()" ion-no-margin>
+                    <img src="../../{{deal.picture}}" width="130px" height="130px"/>
+                    <ion-card-header>
+                        <ion-card-title class="CardTitle">{{deal.name}} - {{deal.country}}</ion-card-title>
+                        <ion-card-content class="CardContent">
+                            <b>Partner: </b> {{deal.partner}} <br>
+                            <b>Category: </b> {{deal.category}} <br>
+                            <b>Continent: </b> {{deal.continent}} <br>
+                            <b>Best time to visit: </b> {{deal.timeVisit}} <br>
+                        </ion-card-content>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

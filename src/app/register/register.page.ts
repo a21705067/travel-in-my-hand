@@ -38,6 +38,16 @@ export class RegisterPage implements OnInit {
   ) {
   }
 
+  async presentAlert(title: string, content: string) {
+    const alert = await this.alertCtrl.create({
+        header: title,
+        message: content,
+        buttons: ['OK']
+    })
+
+    await alert.present();
+  }
+
   public ngOnInit(): void {
     this.validationsForm = this.formBuilder.group({
       fullName: new FormControl('', Validators.compose([
@@ -59,19 +69,23 @@ export class RegisterPage implements OnInit {
         .then(res => {
           console.log(res);
           this.errorMessage = '';
-          this.db.doc('profiles/' + this.authService.getUID()).set({
+          this.db.collection('utilizador').doc(this.authService.getUID()).set({
             fullName: value.fullName,
             email: value.email,
             happy: null,
-            notifications: false,
             picture: null,
+            notifications: false,
+            newsletter: false,
+            camera: false,
+            gallery: false,
+            age: null
           });
-          this.db.doc('friends/' + this.authService.getUID()).set({
+          this.db.collection('utilizador').doc(this.authService.getUID()).collection('friends').doc(this.authService.getUID()).set({
             friendID: null,
-            fullName: null,
-            friendPic: null
+            friendFullName: null,
+            friendPicture: null
           });
-          this.showPopup('Success', 'Account created.');
+          this.presentAlert('Success', 'Account created.');
           this.router.navigate(['/home']);
         }, err => {
           console.log(err);
@@ -83,16 +97,6 @@ export class RegisterPage implements OnInit {
   public goLoginPage(): void {
     this.router.navigate(['/login']);
   }
-
-  async showPopup(title, text) {
-      let alert = await this.alertCtrl.create({
-        message: text,
-        header: title,
-        buttons: [ 'OK' ]
-      });
-      await alert.present();
-  }
-
 
 
 }

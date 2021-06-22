@@ -11,100 +11,45 @@
         </ion-grid>
 </ion-header>
 
-<ion-content class="mainContent">
+<super-tabs>
+    <super-tabs-toolbar slot="top">
+        <super-tab-button>
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label>Personal</ion-label>
+        </super-tab-button>
+        <super-tab-button>
+          <ion-icon name="people-outline"></ion-icon>
+          <ion-label>Following</ion-label>
+        </super-tab-button>
+        <super-tab-button>
+            <ion-icon name="hand-left-outline"></ion-icon>
+            <ion-label>Partners</ion-label>
+        </super-tab-button>
+    </super-tabs-toolbar>
 
-    <ion-tabs>
-        <ion-tab-bar slot="top">
-            <ion-tab-button (click)="showTab('Personal')" class="ion-tab-button">
-                <ion-label>Personal</ion-label>
-            </ion-tab-button>
-            <ion-tab-button (click)="showTab('Following')" class="ion-tab-button">
-                <ion-label>Following</ion-label>
-            </ion-tab-button>
-            <ion-tab-button (click)="showTab('Partners')" class="ion-tab-button">
-                <ion-label>Partners</ion-label>
-            </ion-tab-button>
-        </ion-tab-bar>
-    </ion-tabs>
+    <super-tabs-container>
+        <super-tab>
+           <ion-content>
+           <ion-nav [root]="personalPage"></ion-nav>
+           </ion-content>
+        </super-tab>
+        <super-tab>
+            <ion-content>
+            <ion-nav [root]="followingPage"></ion-nav>
+            </ion-content>
+        </super-tab>
+        <super-tab>
+            <ion-content>
+            <ion-nav [root]="partnersDealsPage"></ion-nav>
+            </ion-content>
+        </super-tab>
+    </super-tabs-container>
+</super-tabs>
 
-    <div class="tab-content">
-        <div class="tab" slot="fixed" *ngIf="tabId === 'Personal'">
-            <ion-grid>
-                <ion-row *ngFor="let travel of userTravels">
-                    <ion-col>
-                        <ion-card class="ionCards" (click)="planned()" ion-no-margin>
-                            <img src="../../{{travel.picture}}"/>
-                        <ion-card-header>
-                            <ion-card-title class="CardTitle">{{travel.name}} - {{travel.country}}</ion-card-title>
-                            <ion-card-content class="CardContent">
-                                <b>Category: </b> {{travel.category}} <br>
-                                <b>Continent: </b> {{travel.continent}} <br>
-                                <b>Best time to visit: </b> {{travel.timeVisit}} <br>
-                            </ion-card-content>
-                        </ion-card-header>
-                        </ion-card>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-        </div>
-
-        <div class="tab" slot="fixed" *ngIf="tabId === 'Following'">
-            <ion-grid>
-                <ion-row *ngFor="let travel of friendsTravels">
-                    <ion-col>
-                        <ion-card class="ionCards" (click)="planned()" ion-no-margin>
-                            <img src="../../{{travel.picture}}"/>
-                            <ion-card-header>
-                                <ion-card-title class="CardTitle">{{travel.name}} - {{travel.country}}</ion-card-title>
-                                <ion-card-content class="CardContent">
-                                    <b>Category: </b> {{travel.category}} <br>
-                                    <b>Continent: </b> {{travel.continent}} <br>
-                                    <b>Best time to visit: </b> {{travel.timeVisit}} <br>
-                                    <b>Visity by: </b> {{travel.friendName}} <br>
-                                </ion-card-content>
-                            </ion-card-header>
-                        </ion-card>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-        </div>
-
-        <div class="tab" slot="fixed" *ngIf="tabId === 'Partners'">
-            <ion-grid>
-                <ion-row *ngFor="let deal of partnersDeals">
-                    <ion-col>
-                        <ion-card class="ionCards" (click)="planned()" ion-no-margin>
-                            <img src="../../{{deal.picture}}" width="130px" height="130px"/>
-                            <ion-card-header>
-                                <ion-card-title class="CardTitle">{{deal.name}} - {{deal.country}}</ion-card-title>
-                                <ion-card-content class="CardContent">
-                                    <b>Partner: </b> {{deal.partner}} <br>
-                                    <b>Category: </b> {{deal.category}} <br>
-                                    <b>Continent: </b> {{deal.continent}} <br>
-                                    <b>Best time to visit: </b> {{deal.timeVisit}} <br>
-                                </ion-card-content>
-                            </ion-card-header>
-                        </ion-card>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-        </div>
-
-        <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
-            <ion-infinite-scroll-content
-                    loadingSpinner="bubbles"
-                    loadingText="Loading more data...">
-            </ion-infinite-scroll-content>
-        </ion-infinite-scroll>
-
-    </div>
-
-</ion-content>
-
-<footer position="absolute">
-    <ion-tabs>
+<footer>
+    <ion-toolbar>
         <ion-tab-bar class="tab-bottom">
-            <ion-tab-button tab="home" selected="true" routerLink="/home">
+            <ion-tab-button tab="home" routerLink="/home">
                 <ion-icon name="home"></ion-icon>
                 <ion-label>Home</ion-label>
             </ion-tab-button>
@@ -128,5 +73,5 @@
                 <ion-menu-button autoHide="false"></ion-menu-button>
             </ion-tab-button>
         </ion-tab-bar>
-    </ion-tabs>
+    </ion-toolbar>
 </footer>

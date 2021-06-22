@@ -3,6 +3,10 @@
 
 /** Ionic CSS Variables **/
 :root {
+  --super-tabs-toolbar-background: #3880ff;
+  --st-base-color-active: --ion-color-light-shade;
+  --st-base-color-inactive: #C0C0C0;
+  --st-indicator-color: #000000;
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
