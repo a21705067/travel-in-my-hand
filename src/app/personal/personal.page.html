@@ -3,7 +3,7 @@
       <ion-row *ngFor="let travel of userTravels">
           <ion-col>
               <ion-card class="ionCards" (click)="planned()" ion-no-margin>
-                  <img src="../../{{travel.picture}}"/>
+                  <img src="../../{{travel.picture}}" width="130px" height="130px"/>
               <ion-card-header>
                   <ion-card-title class="CardTitle">{{travel.name}} - {{travel.country}}</ion-card-title>
                   <ion-card-content class="CardContent">

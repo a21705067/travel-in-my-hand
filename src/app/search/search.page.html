@@ -1,13 +1,13 @@
 <ion-content padding-bottom>
-  <ion-searchbar (ionInput)="filterList($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="filterList($event)" animated></ion-searchbar>
   <ion-list>
-      <ion-card class="card" *ngFor="let item of DestinationList" (click)="location(item.id)">
+      <ion-card class="card" *ngFor="let item of placesList" (click)="location(item.id)">
         <img src="../../{{item.picture}}" width="130px" height="130px">
         <ion-card-header>
-          <ion-card-title>{{item.name}} - {{item.country}}</ion-card-title>
+          <ion-card-title>{{ item.name }} - {{ item.country }}</ion-card-title>
           <ion-card-content class="CardContent">
-            <b>Category: </b> {{item.category}} <br>
-            <b>Hashtags: </b> {{item.hashtags}} <br>
+            <b>Category: </b> {{ item.category }} <br>
+            <b>Hashtags: </b> {{ item.hashtags }} <br>
           </ion-card-content>
         </ion-card-header>
       </ion-card>

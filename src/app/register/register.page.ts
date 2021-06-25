@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import {FireAuthService} from '../services/fire-auth.service';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {AlertController} from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FireAuthService } from '../services/fire-auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +34,7 @@ export class RegisterPage implements OnInit {
       private formBuilder: FormBuilder,
       private router: Router,
       private db: AngularFirestore,
-      private alertCtrl: AlertController,
+      private alertCtrl: AlertController
   ) {
   }
 

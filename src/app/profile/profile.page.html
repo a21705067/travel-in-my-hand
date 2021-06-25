@@ -1,7 +1,7 @@
 <ion-header xmlns="http://www.w3.org/1999/html">
   <ion-card color="light">
     <div class="img-wrapper">
-      <img src="../../assets/img/tsubasa.jpg" />
+      <img src="../../assets/img/avatar.png"/>
       <ion-button color="light">
         <ion-icon slot="icon-only" name="camera-outline" color="medium">
         </ion-icon>
@@ -33,8 +33,9 @@
             <ion-item>
               <ion-label>
                 <p>Happy thought</p>
-                <h2> {{ happy }} </h2>
+                <h2 *ngIf="profile"> {{ happy }} </h2>
               </ion-label>
+              <ion-input [(ngModel)]="happy" *ngIf="!profile"></ion-input>
             </ion-item>
 
             <ion-item name="email">
@@ -44,20 +45,36 @@
               </ion-label>
             </ion-item>
 
-            <ion-item name="birthday">
+            <ion-item name="age">
               <ion-label>
                 <p>Age</p>
-                <h2> {{ age }} </h2>
+                <h2 *ngIf="profile"> {{ age }} </h2>
               </ion-label>
+                <ion-input [(ngModel)]="age" *ngIf="!profile"></ion-input>
+            </ion-item>
+
+            <ion-item name="nationality">
+              <ion-label>
+                <p>Nationality</p>
+                <h2 *ngIf="profile"> {{ nationality }} </h2>
+              </ion-label>
+                <ion-input [(ngModel)]="nationality" *ngIf="!profile"></ion-input>
             </ion-item>
           </ion-list>
 
-          <div class="button">
-            <ion-button class="button button-medium">Edit</ion-button>
-          </div>
+          <ion-grid>
+            <ion-row class="ion-align-items-center">
+              <ion-col class="ion-text-center">
+                <ion-button fill="solid" expand="block" (click)="goEdit()" *ngIf="profile">EDIT</ion-button>
+                <ion-button fill="solid" expand="block" (click)="goSave()" *ngIf="!profile">SAVE</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
         </div>
       </ion-content>
     </super-tab>
+
     <super-tab>
       <ion-content>
         <div>
@@ -65,7 +82,7 @@
             <ion-item *ngFor="let friend of userFriends">
               <ion-avatar>{{friend.friendPicture}}</ion-avatar>
               {{friend.friendFullName}}
-              <ion-icon name="close-circle-outline" style="position: absolute; right: 25px; important;" onClick()="removeFriend({{friend.friendID}})"></ion-icon>
+              <ion-icon name="close-circle-outline" style="position: absolute; right: 25px; important;" (Click())="removeFriend(friend.friendID)"></ion-icon>
             </ion-item>
           </ion-list>
         </div>

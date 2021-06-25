@@ -51,7 +51,7 @@ export class SettingsPage implements OnInit {
     this.db.collection('utilizador').doc(this.authService.getUID()).update({
         notifications: this.notifications,
         newsletter: this.newsletter,
-        camera: this.camera,
+//         camera: this.camera,
         location: this.location,
         gallery: this.gallery
     });

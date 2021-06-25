@@ -15,17 +15,6 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {SuperTabsModule} from '@ionic-super-tabs/angular';
 
-export const firebaseConfig = {
-    apiKey: "AIzaSyDuM8nsn9COpIrS3H54-zVym669DCtzir8",
-        authDomain: "travelers-community-68172.firebaseapp.com",
-        databaseURL: "https://travelers-community-68172-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "travelers-community-68172",
-        storageBucket: "travelers-community-68172.appspot.com",
-        messagingSenderId: "901698758803",
-        appId: "1:901698758803:web:c1217634cae71141a88566",
-        measurementId: "G-VXTYSRHXNP"
-};
-
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],

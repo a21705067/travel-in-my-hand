@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { FirestoreService } from './firestore.service';
 import { RouterModule, Router } from '@angular/router';
+import { auth } from 'firebase/app'
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,18 @@ export class FireAuthService {
 
   public getUID() {
     return firebase.auth().currentUser.uid;
+  }
+
+  public getUsername() {
+  	return firebase.auth().currentUser;
+  }
+
+  public reAuth(email: string, password: string) {
+  	return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(email, password));
+  }
+
+  public updatePassword(newpassword: string) {
+  	return this.afAuth.auth.currentUser.updatePassword(newpassword);
   }
 
 }

@@ -31,8 +31,7 @@ export class Tab2Page implements OnInit {
 
                this.mainuser = db.collection('utilizador').doc(this.authService.getUID());
 
-               this.mainuser.collection('myTravels').valueChanges().subscribe(dados => (this.userTravels = dados));
-
+               db.collection('places').valueChanges().subscribe(dados => (this.userTravels = dados));
     }
 
     public ngOnInit(

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FireAuthService} from '../services/fire-auth.service';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import { FireAuthService } from '../services/fire-auth.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-password',

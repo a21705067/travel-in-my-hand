@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {Router} from '@angular/router';
-import {AngularFireAuth} from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +17,7 @@ export class AppComponent {
     private router: Router,
     private afAuth: AngularFireAuth
   ) {
+
     this.initializeApp();
   }
 
@@ -43,9 +43,24 @@ export class AppComponent {
       icon: 'hand'
     },
     {
+      title: 'Booked Travels',
+      url: './upcoming-travels',
+      icon: 'book'
+    },
+    {
+      title: 'History',
+      url: './historico',
+      icon: 'planet'
+    },
+    {
       title: 'Settings',
       url: './settings',
       icon: 'settings'
+    },
+    {
+      title: 'Change Password',
+      url: './change-password',
+      icon: 'lock'
     },
     {
       title: 'Logout',
@@ -67,7 +82,7 @@ export class AppComponent {
       }, () => {
         this.splashScreen.hide();
       });
-      this.statusBar.styleDefault();
+      this.statusBar.styleBlackTranslucent();
     });
   }
 }

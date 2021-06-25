@@ -1,31 +1,28 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title align="Center">Settings</ion-title>
+    <ion-title align="Center">History</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label>Notifications</ion-label>
-      <ion-toggle slot="end" name="Notifications" color="primary" (ngModelChange)="updateProfile($event)" [(ngModel)]="notifications"></ion-toggle>
-    </ion-item>
+  <ion-grid>
+    <ion-row *ngFor="let travel of userTravels">
+      <ion-col>
+        <ion-card class="ionCards" (click)="planned()" ion-no-margin>
+          <img src="../../{{travel.picture}}"/>
+          <ion-card-header>
+            <ion-card-title class="CardTitle">{{travel.name}} - {{travel.country}}</ion-card-title>
+            <ion-card-content class="CardContent">
+              <b>Category: </b> {{travel.category}} <br>
+              <b>Continent: </b> {{travel.continent}} <br>
+              <b>Best time to visit: </b> {{travel.timeVisit}} <br>
+            </ion-card-content>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-    <ion-item>
-      <ion-label>Newsletter</ion-label>
-      <ion-toggle slot="end" name="Newsletter" color="primary" (ngModelChange)="updateProfile($event)" [(ngModel)]="newsletter"></ion-toggle>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Gallery Access</ion-label>
-      <ion-toggle slot="end" name="Gallery Access" color="primary" (ngModelChange)="updateProfile($event)" [(ngModel)]="gallery"></ion-toggle>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Location</ion-label>
-      <ion-toggle slot="end" name="Location" color="primary" (ngModelChange)="updateProfile($event)" [(ngModel)]="location"></ion-toggle>
-    </ion-item>
-  </ion-list>
 </ion-content>
 
 <footer>

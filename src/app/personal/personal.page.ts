@@ -9,15 +9,12 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
   styleUrls: ['./personal.page.scss'],
 })
 export class PersonalPage implements OnInit {
-    mainuser: AngularFirestoreDocument;
     userTravels
 
   constructor(public authService: FireAuthService,
               public loadingController: LoadingController, private db: AngularFirestore) {
 
-              this.mainuser = db.collection('utilizador').doc(this.authService.getUID());
-
-              this.mainuser.collection('myTravels').valueChanges().subscribe(dados => (this.userTravels = dados));
+              db.collection('places').valueChanges().subscribe(dados => (this.userTravels = dados));
   }
 
   ngOnInit() {

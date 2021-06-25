@@ -23,7 +23,10 @@ const routes: Routes = [
   { path: 'location', loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule) },
   { path: 'camera', loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule) },
   { path: 'tabs', loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule) },
-  { path: 'logout', loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule) }
+  { path: 'logout', loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule) },
+  { path: 'change-password', loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)},
+  { path: 'historico', loadChildren: () => import('./historico/historico.module').then( m => m.HistoricoPageModule)},
+  { path: 'upcoming-travels', loadChildren: () => import('./upcoming-travels/upcoming-travels.module').then( m => m.UpcomingTravelsPageModule)}
 ];
 
 @NgModule({
